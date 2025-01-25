@@ -9,7 +9,7 @@
 
 <body>
 	<p>
-		Это - сайт с апи! Попробуйте отправить GET-запрос по адресу: https://webprof-kupriun.unpe.ru/api
+		Это - сайт с апи! Попробуйте зарегистрироваться по адресу: https://webprof-kupriun.unpe.ru/registration
 	</p>
 </body>
 
