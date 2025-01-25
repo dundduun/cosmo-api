@@ -1,7 +1,15 @@
 <?php
 // При обращении к этому файлу по адресу webprof-kupriun.unpe.ru/api/registration.php сервер возвращает 200, исправить
 
-function registration(PDO $db, $input) {
+function registration(PDO $db, $input, $pathParts, $method) {
+    if ($pathParts[1]) {
+        echoRes(['message' => 'Invalid request']); // Не соответствует требованиям, временная мера
+        return;
+    } else if ($method !== 'POST') {
+        echoRes(['message' => 'Invalid request']); // Не соответствует требованиям, временная мера
+        return;
+    }
+
     // if () {} // проверить существование данных в $input
 
     $sql = 'INSERT INTO users (
@@ -30,7 +38,7 @@ function registration(PDO $db, $input) {
         'last_name' => $input->last_name,
         'patronymic' => $input->patronymic,
         'email' => $input->email,
-        'password' => $input->password, // Пароль надо хэшировать
+        'password' => password_hash($input->password, PASSWORD_DEFAULT),
         'birth_date' => $input->birth_date,
         'token' => '',
     ]);
