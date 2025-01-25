@@ -22,15 +22,7 @@ $input = json_decode(file_get_contents('php://input'));
 
 switch ($pathParts[0]) {
     case 'registration': // Вынести всю байду в отдельный файл
-        if ($pathParts[1]) {
-            echoRes(['message' => 'Invalid request']); // Не соответствует требованиям, временная мера
-            break;
-        } else if ($method !== 'POST') {
-            echoRes(['message' => 'Invalid request']); // Не соответствует требованиям, временная мера
-            break;
-        }
-
-        registration($db, $input);
+        registration($db, $input, $pathParts, $method);
         break;
 
     default: 
