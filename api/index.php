@@ -21,7 +21,7 @@ $queryString = $uriParts['query'];
 $input = json_decode(file_get_contents('php://input'));
 
 switch ($pathParts[0]) {
-    case 'registration': // Вынести всю байду в отдельный файл
+    case 'registration':
         registration($db, $input, $pathParts, $method);
         break;
 
